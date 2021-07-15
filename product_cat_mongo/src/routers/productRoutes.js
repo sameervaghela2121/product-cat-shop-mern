@@ -11,7 +11,7 @@ router.post("/product",async(req,res)=>{
         res.status(201).send(createPro);
         
     } catch (error) {
-        console.log("error")
+        res.status(404).send();
     }
 })
 //Creating/Posting Product Route Ends Here!
@@ -25,13 +25,44 @@ router.get("/product",async(req,res)=>{
         // console.log("Getting Product Data",productData);
         res.send(productData);
     } catch (error) {
-        console.log("ERROR")
+        res.status(404).send({
+            error: 'Its an error'
+        })
     }
 })
 //Getting All Product Route Ends Here!
 
+//Getting Product By Id Route Begins Here!
+
+router.get("/product/:id",async(req,res)=>{
+    try {
+        const _id = req.params.id;
+        // console.log(JSON.stringify(_id))
+        console.log("Trying getting product by id: ",_id)
+        const productData = await Product.findById({_id});
+        if(!productData){
+            console.log("Getting No Product")
+            res.status(404).send()
+        }
+        else{
+            console.log("Getting Product",productData)
+            res.send(productData)
+            // res.status(500).send(error)
+        }
+    } catch (error) {
+        
+    }
+})
+
+//example start
+// router.get('/product/:id/edit')
+// router.get('/product/:id/edit')
+//example ends
+
+//Getting Product By Id Route Ends Here!
+
 //Update Existing Product By Id Route Begins Here!
-router.patch("/product/:id",async(req,res)=>{
+router.patch("/product/:id/edit",async(req,res)=>{
     try {
         const _id = req.params.id;
         const updatePro = await Product.findByIdAndUpdate(_id,req.body,{
@@ -47,25 +78,26 @@ router.patch("/product/:id",async(req,res)=>{
 
 //Finding Product By Slug Starts Here!
 
-router.get("/product/:id",async(req,res)=>{
-    try {
-        const id = req.params.pname;
-        const productNameData = await Product.findOne({id:id})
-        if(!productNameData){
-            res.status(404).send();
-        }
-        else{
-            res.send(productNameData);
-        }
+// router.get("/product/:id",async(req,res)=>{
+//     try {
+//         const id = req.params.pname;
+//         const productNameData = await Product.findOne({id:id})
+//         if(!productNameData){
+//             res.status(404).send(productNameData);
+//         }
+//         else{
+//             res.send(productNameData);
+//         }
 
-    } catch (error) {
-        res.status(500).send(error)
-        console.log("Error in getting by slug")
+//     } catch (error) {
+//         res.status(500).send(error)
+//         console.log("Error in getting by slug")
         
-    }
-})
+//     }
+// })
+//Finding Product By Slug Ends Here!
 
-//Finding Product By Slug Starts Here!
+
 router.get("/mix",async(req,res)=>{
     try {
         const mixData = await Product

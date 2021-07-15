@@ -27,7 +27,7 @@ const SingleProduct = () => {
                     </div>
                 </div>
                 <div className="stats mt-2">
-                    <div className="d-flex justify-content-between p-price"><span>Category</span><span>{sp[0].pdesc}</span></div>
+                    <div className="d-flex justify-content-between p-price"><span>Category</span><span>{sp[0].category.category}</span></div>
                     {/* <div className="d-flex justify-content-between p-price"><span>Pro stand</span><span>$999</span></div>
                     <div className="d-flex justify-content-between p-price"><span>Vesa Mount Adapter</span><span>$199</span></div> */}
                 </div>

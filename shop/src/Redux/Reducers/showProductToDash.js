@@ -1,34 +1,60 @@
-import { PRODUCT_FETCH_SUCCESS } from "../Constants/productConstants"
+import { PRODUCT_FETCH_SUCCESS, PRODUCT_FETCH_FAIL, FETCH_PRODUCT_BY_ID_SUCCESS, FETCH_PRODUCT_BY_ID_FAIL, UPDATE_PRODUCT_SUCCESS, UPDATE_PRODUCT_FAIL } from "../Constants/productConstants"
 const initialState = {
     products:[]
 }
+const idinitialState = {
+    productweget:[]
+}
+const updateinitialState = {
+    up : []
+}
 
-const showproducttodash = (state = initialState,action) => {
+export const showproducttodash = (state = initialState,action) => {
     switch(action.type){
         case PRODUCT_FETCH_SUCCESS:
-            console.log("In showproducttodash reducer")
+            // console.log("In showproducttodash reducer")
             return {
                 products:action.payload,
             }
             // console.log(datas)
+        case PRODUCT_FETCH_FAIL:
+            console.log("Reducer Saying Product Fetch Fail!")
+            alert("No Product Available")
+            
         
         default : return state;
     }
 }
 // console.log("initialState",initialState)
-export default showproducttodash;
+
+export const showProductByIdReducer = (state=idinitialState,action) => {
+    switch(action.type){
+        case FETCH_PRODUCT_BY_ID_SUCCESS:
+            // console.log("In showProductByIdReducer");
+            return {
+                productweget: action.payload,
+            }
+        
+        case FETCH_PRODUCT_BY_ID_FAIL:
+            console.log("Reducer Says ProductFetchById Failed")
+            
+        default : return state;
+    }
+}
 
 
-//This is sample inititalState
+export const updateProductByIdReducer = (state=updateinitialState,action) => {
+    switch(action.type){
+        case UPDATE_PRODUCT_SUCCESS:
+            return {
+                up: action.payload,
+            }
 
-// const initialState = {
-//     products:[
-//         {
-//             id:1,
-//             ptitle:"Sameer",
-//             pimg:"PIMG",
-//             pdesc:"Descriptiion",
-//             category:"Category of product"
-//         }
-//     ]
-// }
+        case UPDATE_PRODUCT_FAIL:
+            console.log("Updating Product Failed!!")
+
+        default : return state;
+    }
+}
+
+// export default showproducttodash;

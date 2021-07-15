@@ -8,6 +8,9 @@ import {
 } from "react-router-dom";
 import SingleProduct from './Components/SingleProduct';
 import { useSelector } from 'react-redux';
+import AddProduct from './Components/AddProduct';
+import ProductListScreen from './Components/ProductListScreen';
+import EditProduct from './Components/EditProduct';
 
 function App() {
   const showproducttodash = useSelector((state) => state.showproductdata.products)
@@ -19,7 +22,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={ShowProduct}/>
           <Route exact path="/product/:productId" component={SingleProduct}/>
-          <Router>404 Not Found</Router>
+          <Route exact path="/addproduct" component={AddProduct}/>
+          <Route exact path="/listproduct" component={ProductListScreen}/>
+          <Route exact path="/editproduct/:productId" component={EditProduct}/>
+          {/* <Router>404 Not Found</Router> */}
         </Switch>
       </Router>
       {/* <ShowProduct/> */}

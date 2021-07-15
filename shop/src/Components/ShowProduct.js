@@ -24,7 +24,7 @@ const ShowProduct = () => {
         dispatch(fetchproductact())
     }
     const productId = useParams();
-    console.log("Params",productId)
+    // console.log("Params",productId)
     const showdetail = (f) => {
         console.log(f)
         // const sam = showproducttodash.filter(function(g){
@@ -42,7 +42,7 @@ const ShowProduct = () => {
             {/* {(showproducttodash)?<h2>Here is data</h2>:<h2>Here is No data</h2>} */}
             <div className="main-container my-3" style={{"display":"flex"}}>
             {
-                showproducttodash?.map((pdata)=>{
+                showproducttodash? showproducttodash.map((pdata)=>{
                     return(
                         <div key={pdata._id}>
                         <Link to={`/product/${pdata._id}`}>
@@ -66,7 +66,7 @@ const ShowProduct = () => {
                         </Link>
                         </div>
                     )
-                    })
+                    }) : <h1>No Product Available!</h1>
             }</div>
             
         </div>
