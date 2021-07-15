@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchproductact } from '../Redux/Actions/Index';
+import { fetchproductact, deleteProductById } from '../Redux/Actions/Index';
 import { useHistory, useParams } from "react-router-dom";
 
 
@@ -8,8 +8,15 @@ const ProductListScreen = () => {
     const dispatch = useDispatch();
     const showproducttodash = useSelector((state) => state.showproductdata.products);
     const history = useHistory();
+    
+    const deleteProduct = (e) => {
+        console.log("Delete Product Id: ",e);
+        dispatch(deleteProductById(e));
+        window.location.reload();
+    }
+
     useEffect(() => {
-        dispatch(fetchproductact())
+        dispatch(fetchproductact());
     }, [])
 
     const editproduct = (e) => {
@@ -17,6 +24,8 @@ const ProductListScreen = () => {
         history.push(`/editproduct/${e}`);
 
     }
+
+    
 
     return (
         <div className="container my-3">
@@ -46,13 +55,11 @@ const ProductListScreen = () => {
                                 <td>{pdata.category.category}</td>
                                 <td>{pdata.pprice}</td>
                                 <td><button className="btn btn-warning" onClick={(e)=>{editproduct(pdata._id)}}>Edit</button></td>
-                                <td><button className="btn btn-danger">Delete</button></td>
+                                <td><button id="del-btn" className="btn btn-danger" onClick={(e)=>{deleteProduct(pdata._id)}}>Delete</button></td>
                             </tr>
                         )
                     })
-                }
-                
-                
+                }                
             </tbody>
             </table>
         </div>

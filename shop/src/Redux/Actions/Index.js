@@ -1,4 +1,4 @@
-import { PRODUCT_FETCH_REQUEST, PRODUCT_FETCH_SUCCESS, PRODUCT_FETCH_FAIL, FETCH_PRODUCT_BY_ID_SUCCESS, FETCH_PRODUCT_BY_ID_FAIL, UPDATE_PRODUCT_SUCCESS, UPDATE_PRODUCT_FAIL } from '../Constants/productConstants';
+import { PRODUCT_FETCH_REQUEST, PRODUCT_FETCH_SUCCESS, PRODUCT_FETCH_FAIL, FETCH_PRODUCT_BY_ID_SUCCESS, FETCH_PRODUCT_BY_ID_FAIL, UPDATE_PRODUCT_SUCCESS, UPDATE_PRODUCT_FAIL, DELETE_PRODUCT_SUCCESS, DELETE_PRODUCT_FAIL } from '../Constants/productConstants';
 import axios from "axios";
 
 const showproductdash = (products) => {
@@ -77,6 +77,25 @@ export const updateProductById = (productId,productData) => {
         .catch((error)=>{
             dispatch({
                 type: UPDATE_PRODUCT_FAIL
+            })
+        })
+    }
+}
+
+export const deleteProductById = (productId) => {
+    // const obj = productId;
+    console.log("Delete Product Id in action: ",productId)
+    return (dispatch) => {
+        axios.delete(`/product/${productId}`)
+        .then((res)=>{
+            dispatch({
+                type: DELETE_PRODUCT_SUCCESS,
+                payload: res.data
+            })
+        })
+        .catch((error)=>{
+            dispatch({
+                type: DELETE_PRODUCT_FAIL
             })
         })
     }

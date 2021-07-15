@@ -109,5 +109,24 @@ router.get("/mix",async(req,res)=>{
     }
 })
 
+//Find By Id and Delete Route Starts Here!
+
+router.delete("/product/:id",async(req,res)=>{
+    try {
+        const _id = req.params.id;
+        if(!_id){
+            return res.status(400).send();
+        }
+        else{
+            const deleteProduct = await Product.findByIdAndDelete(_id);
+            res.send(deleteProduct);
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+})
+
+//Find By Id and Delete Route Ends Here!
+
 
 module.exports = router;
