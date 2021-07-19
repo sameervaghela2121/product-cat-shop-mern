@@ -11,6 +11,9 @@ import { useSelector } from 'react-redux';
 import AddProduct from './Components/AddProduct';
 import ProductListScreen from './Components/ProductListScreen';
 import EditProduct from './Components/EditProduct';
+import RegisterUser from "./Components/RegisterUser";
+import LoginUser from "./Components/LoginUser";
+import Dashboard from "./Components/Dashboard";
 
 function App() {
   const showproducttodash = useSelector((state) => state.showproductdata.products)
@@ -25,6 +28,9 @@ function App() {
           <Route exact path="/addproduct" component={AddProduct}/>
           <Route exact path="/listproduct" component={ProductListScreen}/>
           <Route exact path="/editproduct/:productId" component={EditProduct}/>
+          <Route exact path="/register" component={RegisterUser}/>
+          <Route exact path="/login" component={LoginUser}/>
+          <Route exact path="/dashboard" component={Dashboard}/>
           {/* <Router>404 Not Found</Router> */}
         </Switch>
       </Router>
