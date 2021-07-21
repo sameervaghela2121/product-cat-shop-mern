@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCartAction } from '../Redux/Actions/cartActions';
+import { useHistory } from "react-router-dom";
 
 const CartScreen = () => {
     const dispatch = useDispatch();
     const cartSelec = useSelector(state => state.addToCartReducer.cartItems);
+    const cartSelec1 = useSelector(state => state.addToCartReducer);
+    const history = useHistory();
+
     console.log(cartSelec);
     var sam;
     console.log(cartSelec.pprice);
@@ -17,6 +21,11 @@ const CartScreen = () => {
         // console.log("Remove From Cart: ",e);
         dispatch(removeFromCartAction(e));
 
+    }
+
+    const placeOrderBtn = (e) => {
+        console.log("Place Order Button Clicked");
+        history.push("/placeorder");
     }
 
     useEffect(() => {
@@ -54,12 +63,17 @@ const CartScreen = () => {
                         </tr>
                         
                     
-                    );
-                })):<h1>No Product Available</h1>
+                    )
+                })):<h1>No Product Available In Cart!</h1>
             }
             </tbody>
-            <thead><tr><th className="col-6">Total: {newSum}</th></tr></thead>
-            {/* <tbody><th>{sum}</th></tbody> */}
+            <thead>
+                <tr>
+                    <th className="col-6">Total: {newSum}</th>
+                    <th><button className="btn btn-warning" onClick={(e)=>{placeOrderBtn()}}>Place Order</button></th>
+                </tr>
+            </thead>
+            
             </table>
 
         </div>

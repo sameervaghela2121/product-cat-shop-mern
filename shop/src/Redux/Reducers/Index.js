@@ -1,6 +1,7 @@
 import { showproducttodash, showProductByIdReducer, updateProductByIdReducer, deleteProductByIdReducer } from "./showProductToDash";
 import { registerUserReducer, loginUserReducer } from "./userReducer";
 import { addToCartReducer } from "./cartReducer";
+import { orderDetailReducer } from "./orderReducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     registerUser: registerUserReducer,
     loginUser: loginUserReducer,
     addToCartReducer: addToCartReducer,
+    orderDetail: orderDetailReducer,
 })
 
 export default rootReducer;

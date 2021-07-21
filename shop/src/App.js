@@ -15,6 +15,8 @@ import Dashboard from "./Components/Dashboard";
 import Header from "./Components/Header";
 import CartScreen from "./Components/CartScreen";
 import Footer from "./Components/Footer";
+import PlaceOrder from './Components/PlaceOrder';
+import OrderSuccess from "./Components/OrderSuccess";
 
 function App() {
   // const showproducttodash = useSelector((state) => state.showproductdata.products)
@@ -23,7 +25,7 @@ function App() {
     <div className="App">
       <Router>
         <Header/>
-        <h1>MERN APP</h1>
+        {/* <h1>MERN APP</h1> */}
         <Switch>
           <Route exact path="/" component={ShowProduct}/>
           <Route exact path="/product/:productId" component={SingleProduct}/>
@@ -34,6 +36,8 @@ function App() {
           <Route exact path="/login" component={LoginUser}/>
           <Route exact path="/dashboard" component={Dashboard}/>
           <Route exact path="/cart" component={CartScreen}/>
+          <Route exact path="/placeorder" component={PlaceOrder}/>
+          <Route exact path="/ordersuccess" component={OrderSuccess}/>
           <Router>404 Not Found</Router>
         </Switch>
         <Footer/>

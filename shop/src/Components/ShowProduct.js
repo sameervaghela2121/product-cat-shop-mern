@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchproductact } from "../Redux/Actions/Index";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { addToCartAction } from "../Redux/Actions/cartActions";
 
 
 
@@ -26,6 +27,7 @@ const ShowProduct = () => {
 
   const addtoCart = (e) => {
       console.log("This product is added to cart! ",e);
+      dispatch(addToCartAction(e));
   }
   useEffect(() => {
     dispatch(fetchproductact());
