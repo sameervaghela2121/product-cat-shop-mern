@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from "react-router-dom";
 import { getProductById, updateProductById } from "../Redux/Actions/Index";
-import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux';
-import validator from 'validator';
 
 const EditProduct = () => {
     const productId = useParams();
@@ -11,7 +9,6 @@ const EditProduct = () => {
     // console.log("OBJECT PROBLEm",object)
     console.log("This is product id: ",productId)
     const dispatch = useDispatch();
-    const [fdata, setFdata] = useState([]);
     const [ename, setEname] = useState("");
     const [edesc, setEdesc] = useState("");
     const [eprice, setEprice] = useState("");

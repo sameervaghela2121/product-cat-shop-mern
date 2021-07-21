@@ -50,7 +50,7 @@ const RegisterUser = () => {
         <div>
             <div className="container my-3">
             <h1>Register Here!</h1>
-            <form onSubmit={onregister}>
+            <form onSubmit={onregister} style={{"display":"inline-table","width":"500px"}}>
             <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Name</label>
                 <input type="text" className="form-control" value={name} name="name" onChange={(e)=>setName(e.target.value)} placeholder="Enter Name"/>

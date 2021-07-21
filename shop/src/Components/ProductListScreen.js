@@ -50,7 +50,7 @@ const ProductListScreen = () => {
                             <tr key={pdata._id}>
                                 <th scope="row">{pdata._id}</th>
                                 <td>{pdata.pname}</td>
-                                <td><img src={pdata.pimg} style={{"height":"100px", "width":"150px"}}/></td>
+                                <td><img src={pdata.pimg} style={{"height":"100px", "width":"150px"}} alt={pdata.pname}/></td>
                                 <td>{pdata.pdesc}</td>
                                 <td>{pdata.category.category}</td>
                                 <td>{pdata.pprice}</td>

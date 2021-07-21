@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
         type: String
     },
     pprice: {
-        type: String,
+        type: Number,
         required: true
     },
     pdesc: {

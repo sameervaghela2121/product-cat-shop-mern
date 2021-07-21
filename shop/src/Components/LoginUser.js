@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUserAction } from "../Redux/Actions/userActions";
-
+// import Footer from './Footer';
 
 const LoginUser = () => {
     const [email, setEmail] = useState("");
@@ -36,12 +36,17 @@ const LoginUser = () => {
         }
     }, [luser])
 
+    // const style = {
+    //     "margin-top":"225px",
+    //     "backgroundColor": "rgba(0, 0, 0, 0.2)"
+    // }
+
     
     return (
         <div>
             <div className="container my-3">
             <h1>Login Here!</h1>
-            <form onSubmit={onlogin}>
+            <form onSubmit={onlogin} style={{"display":"inline-table","width":"500px"}}>
             <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Email Address</label>
                 <input type="email" className="form-control" value={email} name="email" onChange={(e)=>setEmail(e.target.value)} placeholder="Enter email"/>
@@ -53,6 +58,7 @@ const LoginUser = () => {
             <button type="submit" className="btn btn-primary my-3">Login</button>
             </form>
             </div>
+            {/* <Footer style={style}/> */}
         </div>
     )
 }

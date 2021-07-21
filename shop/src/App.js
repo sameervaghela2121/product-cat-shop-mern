@@ -4,24 +4,26 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import SingleProduct from './Components/SingleProduct';
-import { useSelector } from 'react-redux';
 import AddProduct from './Components/AddProduct';
 import ProductListScreen from './Components/ProductListScreen';
 import EditProduct from './Components/EditProduct';
 import RegisterUser from "./Components/RegisterUser";
 import LoginUser from "./Components/LoginUser";
 import Dashboard from "./Components/Dashboard";
+import Header from "./Components/Header";
+import CartScreen from "./Components/CartScreen";
+import Footer from "./Components/Footer";
 
 function App() {
-  const showproducttodash = useSelector((state) => state.showproductdata.products)
+  // const showproducttodash = useSelector((state) => state.showproductdata.products)
   
   return (
     <div className="App">
       <Router>
-      <h1>MERN APP</h1>
+        <Header/>
+        <h1>MERN APP</h1>
         <Switch>
           <Route exact path="/" component={ShowProduct}/>
           <Route exact path="/product/:productId" component={SingleProduct}/>
@@ -31,8 +33,10 @@ function App() {
           <Route exact path="/register" component={RegisterUser}/>
           <Route exact path="/login" component={LoginUser}/>
           <Route exact path="/dashboard" component={Dashboard}/>
-          {/* <Router>404 Not Found</Router> */}
+          <Route exact path="/cart" component={CartScreen}/>
+          <Router>404 Not Found</Router>
         </Switch>
+        <Footer/>
       </Router>
       {/* <ShowProduct/> */}
     </div>

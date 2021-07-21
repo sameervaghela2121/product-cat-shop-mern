@@ -25,7 +25,7 @@ export const showproducttodash = (state = initialState,action) => {
             console.log("Reducer Saying Product Fetch Fail!")
             alert("No Product Available")
             
-        
+        break;
         default : return state;
     }
 }
@@ -41,7 +41,8 @@ export const showProductByIdReducer = (state=idinitialState,action) => {
         
         case FETCH_PRODUCT_BY_ID_FAIL:
             console.log("Reducer Says ProductFetchById Failed")
-            
+        
+        break;
         default : return state;
     }
 }
@@ -56,7 +57,7 @@ export const updateProductByIdReducer = (state=updateinitialState,action) => {
 
         case UPDATE_PRODUCT_FAIL:
             console.log("Updating Product Failed!!")
-
+        break;
         default : return state;
     }
 }
@@ -70,7 +71,7 @@ export const deleteProductByIdReducer = (state=deleteinitialState,action) => {
         
         case DELETE_PRODUCT_FAIL:
             console.log("Deleting Product Failed!!")
-
+        break;
         default : return state;
     }
 }

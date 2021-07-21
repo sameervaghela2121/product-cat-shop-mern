@@ -11,7 +11,6 @@ const AddProduct = () => {
     const [category, setCategory] = useState("");
     const [pdesc, setPdesc] = useState("");
     const [pprice, setPprice] = useState("");
-    const [tempurl, setTempurl] = useState("");
     const history = useHistory();
     
 
@@ -66,7 +65,7 @@ const AddProduct = () => {
         <div>
             <h1>Add Product Here!</h1>
             <div className="container my-3">
-                <form onSubmit={onAddProduct} >
+                <form onSubmit={onAddProduct} style={{"display":"inline-table","width":"500px"}}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Name Of Product</label>
                     <input type="text" className="form-control" id="productname" value={pname} onChange={(e)=>{setPname(e.target.value)}} placeholder="Name Of Product" required="required" />
